@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap');
+
+:root {
+    --bg-dark: #0a0a0a;
+    --bg-sidebar: #1a1a1a;
+    --accent-blue: #58C4DD;
+    --accent-gold: #FFC107;
+    --text-muted: #999;
+    --border-color: #333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Merriweather', serif;
+    background: var(--bg-dark);
+    color: var(--accent-blue);
+    overflow: hidden;
+}
+
+#container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+#sidebar {
+    width: 300px;
+    background: var(--bg-sidebar);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    border-right: 2px solid var(--accent-blue);
+    overflow-y: auto;
+}
+
+h1 { font-size: 22px; margin-bottom: 5px; }
+h2 { font-size: 13px; color: var(--text-muted); font-style: italic; margin-bottom: 30px; }
+
+.control-group { margin-bottom: 20px; }
+.control-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.control-value { color: var(--accent-gold); font-weight: 700; }
+
+input[type="range"] {
+    width: 100%;
+    cursor: pointer;
+    accent-color: var(--accent-blue);
+}
+
+.button-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+button {
+    padding: 10px;
+    background: var(--accent-blue);
+    border: none;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 11px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover { background: var(--accent-gold); }
+button.active { background: var(--accent-gold); outline: 2px solid white; }
+
+#canvas-container { flex: 1; position: relative; }
+
+#tooltip {
+    position: absolute;
+    background: rgba(255, 193, 7, 0.95);
+    color: #000;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    pointer-events: none;
+    display: none;
+    z-index: 100;
+    font-weight: bold;
+}
+
+#info {
+    margin-top: auto;
+    font-size: 11px;
+    color: #666;
+    border-top: 1px solid var(--border-color);
+    padding-top: 15px;
+}
