@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>4D Tensor Visualizer</title>
+    <title>Advanced 4D Tensor Visualizer</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
@@ -12,47 +12,49 @@
         <aside id="sidebar">
             <header>
                 <h1>4D Tensor Visualizer</h1>
-                <h2>The Multi-Block Filing System</h2>
+                <p class="subtitle">Multi-Head Attention Simulation</p>
             </header>
             
-            <section class="controls">
-                <div class="control-group" data-dim="H">
-                    <div class="control-label"><span>Heads (H)</span><span class="control-value" id="h-value">2</span></div>
+            <div class="control-section">
+                <div class="control-group">
+                    <label>Heads (H) <span id="h-val" class="val">2</span></label>
                     <input type="range" id="h-slider" min="1" max="8" value="2">
                 </div>
-                <div class="control-group" data-dim="B">
-                    <div class="control-label"><span>Batch (B)</span><span class="control-value" id="b-value">8</span></div>
-                    <input type="range" id="b-slider" min="1" max="64" value="8">
+                <div class="control-group">
+                    <label>Batch (B) <span id="b-val" class="val">8</span></label>
+                    <input type="range" id="b-slider" min="1" max="32" value="8">
                 </div>
-                <div class="control-group" data-dim="S">
-                    <div class="control-label"><span>Sequence (S)</span><span class="control-value" id="s-value">12</span></div>
-                    <input type="range" id="s-slider" min="1" max="50" value="12">
+                <div class="control-group">
+                    <label>Sequence (S) <span id="s-val" class="val">12</span></label>
+                    <input type="range" id="s-slider" min="1" max="30" value="12">
                 </div>
-                <div class="control-group" data-dim="D">
-                    <div class="control-label"><span>Features (D)</span><span class="control-value" id="d-value">8</span></div>
+                <div class="control-group">
+                    <label>Features (D) <span id="d-val" class="val">8</span></label>
                     <input type="range" id="d-slider" min="2" max="16" value="8">
                 </div>
                 <div class="control-group">
-                    <div class="control-label"><span>Explode View</span><span class="control-value" id="explode-value">0.30</span></div>
-                    <input type="range" id="explode-slider" min="0" max="100" value="30">
+                    <label>Explode <span id="ex-val" class="val">0.30</span></label>
+                    <input type="range" id="ex-slider" min="0" max="100" value="30">
                 </div>
-            </section>
+            </div>
 
-            <section class="button-grid">
-                <button id="view-3d" class="active">3D View</button>
-                <button id="view-2d">2D View</button>
-                <button id="auto-rotate">Auto Rotate</button>
-                <button id="reset-view">Reset View</button>
-            </section>
+            <div class="button-grid">
+                <button id="btn-3d" class="active">3D View</button>
+                <button id="btn-2d">2D View</button>
+                <button id="btn-rotate">Auto Rotate</button>
+                <button id="btn-heatmap">Heatmap: OFF</button>
+                <button id="btn-reset" class="span-2">Reset Camera</button>
+            </div>
             
-            <footer id="info">
-                <p><strong>Hover:</strong> Highlight sequence across batches/heads.</p>
-                <p><strong>Controls:</strong> Drag to rotate | Scroll to zoom.</p>
-                <p><strong>Shape:</strong> <code id="shape-display">[2, 8, 12, 8]</code></p>
+            <footer id="status">
+                <div class="shape-box">
+                    Shape: <code id="shape-display">[2, 8, 12, 8]</code>
+                </div>
+                <p>Hover cells to inspect indices and activation values.</p>
             </footer>
         </aside>
         
-        <main id="canvas-container">
+        <main id="viewport">
             <div id="tooltip"></div>
         </main>
     </div>
